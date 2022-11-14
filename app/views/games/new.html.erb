@@ -1,0 +1,18 @@
+<h1>New Game</h1>
+<div class="container">
+  <div class="row">
+    <% @new_chars.each do |char| %>
+      <div class="col mx-2 py-4 fs-3 text-uppercase text-white bg-primary d-flex justify-content-center"><%= char %></div>
+    <% end %>
+  </div>
+  <div class="row mt-3">
+    <form action="score" method="post" data-turbo="false">
+  <!-- ... -->
+      <label class="fs-4" for="answer">What is the longest word you can find?</label>
+      <input class="form-control my-2" type="text" name="answer" placeholder="Your word">
+      <input type="hidden" name="chars" value="<%= @new_chars %>" >
+      <input class="btn btn-primary" type="submit" value="Score!">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    </form>
+  </div>
+</div>
